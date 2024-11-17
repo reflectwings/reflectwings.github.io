@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REFLECTWINGS | Always try something new.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- 引入 Font Awesome -->
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        header {
+            position: fixed; /* 固定在页面顶部 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            justify-content: space-between; /* 元素分散对齐 */
+            padding: 10px 20px; /* 增加上下左右的留白 */
+            background-color: #1a1e38; /* 绿色背景 */
+            border-bottom: 1px solid #e7e7e7;
+            z-index: 1000; /* 确保header在最上层 */
+            height: 60px; /* 增加header的高度 */
+            border: none; /* 去掉默认边框 */
+        }
+        header h1 {
+            margin: 0;
+            color: #fff; /* 白色文字 */
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+            margin-right: 60px; /* 增加右边距，避免紧靠右边缘 */
+        }
+        header nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        header nav ul li {
+            margin-left: 40px;
+        }
+        header nav ul li a {
+            text-decoration: none;
+            color: #fff; /* 白色链接 */
+            transition: text-decoration 0.3s; /* 平滑过渡效果 */
+        }
+        header nav ul li a:hover {
+            text-decoration: underline; /* 鼠标悬停时添加下划线 */
+        }
+
+        /* 以上内容暂代css样式 */
+        .background-image {
+            height: 100vh; /* 占满整个视口高度 */
+            position: relative; /* 为绝对定位做准备 */
+            overflow: hidden; /* 防止内容溢出 */
+            display: flex; /* 使用Flexbox布局 */
+            flex-direction: column; /* 垂直排列子元素 */
+            justify-content: center; /* 垂直居中 */
+            align-items: center; /* 水平居中 */
+        }
+        .background-image img {
+            width: 100%; /* 图片宽度占满容器 */
+            height: 100%; /* 图片高度占满容器 */
+            object-fit: cover; /* 使图片覆盖整个区域 */
+            position: absolute; /* 绝对定位 */
+            top: 0;
+            left: 0;
+        }
+        .background-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+            z-index: 1;
+        }
+        .background-image h1, .background-image button {
+            position: relative; /* 相对于.background-image定位 */
+            z-index: 2; /* 确保文本和按钮在背景之上 */
+        }
+        .background-image h1 {
+            text-align: center; /* 文字居中 */
+            margin: 0; /* 移除默认的外边距 */
+            color: #fff; /* 白色文字 */
+            font-size: 3em; /* 上方文字更大 */
+            margin-bottom: 0.5em; /* 添加底部外边距 */
+        }
+        #learnMoreButton {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #4CAF50; /* 设置文字颜色 */
+            background-color: transparent; /* 取消背景颜色 */
+            border: 2px solid transparent; /* 默认边框透明 */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: border-color 0.3s, color 0.3s; /* 添加过渡效果 */
+        }
+        #learnMoreButton:hover {
+            border-color: #4CAF50; /* 悬浮时显示边框 */
+            color: #45a049; /* 悬浮时改变文字颜色 */
+        }
+        .content {
+            padding-top: 40px; /* 增加padding-top以避免内容被header遮挡 */
+            padding-bottom: 40px; /* 页脚空间 */
+            background-color: #f8f9fa; /* 灰色背景 */
+            text-align: center; /* 添加此行实现内容居中 */
+        }
+        section {
+            margin: 20px auto; /* 修改此行，使section居中显示 */
+            padding: 20px;
+            background-color: transparent; /* 设置背景色为透明 */
+            text-align: center; /* 确保标题和正文居中 */
+        }
+        section h2 {
+            text-align: center; /* 确保标题居中 */
+        }
+        section p {
+            text-align: center; /* 确保正文居中 */
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #1a1e38; /* 黑色背景 */
+            border: none; /* 去掉默认边框 */
+            color: #fff; /* 白色文字 */
+        }
+        /* 为哔哩哔哩链接单独添加悬浮下划线样式 */
+        .bilibili-link {
+            text-decoration: none;
+            color: #000000; /* 黑色链接 */
+            transition: color 0.3s; /* 平滑过渡效果，仅用于颜色变化 */
+        }
+
+        .bilibili-link:hover {
+            text-decoration: underline; /* 鼠标悬停时添加下划线 */
+            color: #000000; /* 保持颜色不变 */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>REFLECTWINGS</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="artworks.html">作品</a></li>
+                <li><a href="resources.html">资源</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="background-image">
+        <img src="assets/images/bg.png" alt="背景图">
+        <h1>欢迎来到映羽唯的博客</h1>
+        <button id="learnMoreButton">了解更多</button>
+    </div>
+    <div class="content">
+        <section>
+            <h2>个人介绍</h2>
+            <p>这个人太写了什么都没有懒。<br></p>
+        </section>
+        <section>
+            <h2>相关连接</h2>
+            <p>
+                <a href="https://space.bilibili.com/350846005" target="_blank" class="bilibili-link">
+                    <i class="fab fa-bilibili"></i> 映羽唯的哔哩哔哩频道
+                </a>
+            </p>
+        </section>
+        <section>
+            <h2>个人作品展示</h2>
+            <p>这个人太菜了没有作品</p>
+        </section>
+    </div>
+    <footer>
+        <p>版权所有 &copy; 2024 REFLECTWINGS</p>
+
+    </footer>
+    <script>
+        document.getElementById('learnMoreButton').addEventListener('click', function() {
+            document.querySelector('.content').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
